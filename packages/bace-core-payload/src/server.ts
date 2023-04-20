@@ -1,8 +1,8 @@
-import express from 'express';
-import payload from 'payload';
+// import express from 'express';
+// import payload from 'payload';
 
-// const express = require('express');
-// const payload = require('payload');
+const express = require('express');
+const payload = require('payload');
 
 require('dotenv').config();
 const app = express();

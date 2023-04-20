@@ -26,7 +26,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cross-env packages/bace-core-payload/src/server.ts PAYLOAD_CONFIG_PATH=packages/bace-core-payload/src/payload.config.ts nodemon",
+        "command": "nodemon packages/bace-core-payload/src/server.ts PAYLOAD_CONFIG_PATH=packages/bace-core-payload/src/payload.config.ts",
         "forwardAllArgs": true,
         "watch": true,
         "inspect": "inspect"
