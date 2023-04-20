@@ -1,0 +1,58 @@
+{
+  "name": "bace-core-payload",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/bace-core-payload/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/bace-core-payload",
+        "main": "packages/bace-core-payload/src/server.ts",
+        "tsConfig": "packages/bace-core-payload/tsconfig.app.json",
+        "assets": ["packages/bace-core-payload/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "packages/bace-core-payload/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cross-env packages/bace-core-payload/src/server.ts PAYLOAD_CONFIG_PATH=packages/bace-core-payload/src/payload.config.ts nodemon",
+        "forwardAllArgs": true,
+        "watch": true,
+        "inspect": "inspect"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/bace-core-payload/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/bace-core-payload/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
